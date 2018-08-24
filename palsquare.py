@@ -10,7 +10,46 @@ input = fin.read().splitlines()
 base = int(input[0])
 fin.close()
 
+pair = {10: 'A', 11: 'B', 12: 'C', 13: 'D', 14: 'E', 15: 'F', 16: 'G', 17: 'H', 18: 'I', 19: 'J', 20: 'K',
+         0:'0', 1:'1',2:'2',3:'3',4:'4',5:'5',6:'6', 7:'7',8:'8',9:'9'}
 
+def is_p(d_list):
+    rslt = True
+    n = len(d_list)
+    for i in range(n):
+        if d_list[i] != d_list[n - i -1]:
+            rslt = False
+    return rslt
+
+def tobase(n,b=base):
+    if n == 0:
+        return [0]
+    else:
+        s = ''
+        while n:
+            s = pair[int(n % b)] + s
+            n //= b
+        return s
+
+
+fout = open('palsquare.out', 'w')
+for i in range(1, 301):
+    data = i ** 2
+    x = tobase(data)
+    if is_p(x):
+        fout.write(tobase(i,base) + ' ' + x + '\n')
+fout.close()
+
+fin = open('palsquare.in', 'r')
+input = fin.read().splitlines()
+base = int(input[0])
+fin.close()
+
+'''
+Method below is my stupid try!
+
+'''
+'''
 def is_p(num_list):
     global print_out
     num = len(num_list)
@@ -122,3 +161,4 @@ for i in range(1, 301):
         fout.write(str(print_i) + ' ' + str(print_out) + '\n')
 
 fout.close()
+'''
