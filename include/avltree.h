@@ -7,7 +7,7 @@
 using namespace std;
 
 template <class T>
-class AVLTree : public Tree<T> 
+class AVLTree : public BSTree<T> 
 {
 public:
 	void insert(T &value) { m_insert(this->root, value); }
